@@ -96,24 +96,25 @@ export default function ProductForm ({
         <input 
             type="text" 
             placeholder = "Product Name" 
-            value={title} 
+            value={title}
+            // key={} 
             onChange = {ev => setTitle(ev.target.value)}/>
 
         <label>Category</label>
         <select value = {category} onChange = {ev => setCategory(ev.target.value)}>
             <option value="" >N/A</option>
             {categories.length > 0 && categories.map(c => (
-                <option value ={c._id} >{c.name}</option>
+                <option key={c._id} value ={c._id} >{c.name}</option>
             ))}
         </select>
 
         {propertiesToFill.length > 0 && propertiesToFill.map (p => (
-            <div className="">
+            <div className="" key={p.name}>
                 <label>{p.name}</label>
                 <div>
                     <select value = {productProperties[p.name]} onChange = {ev => setProductProp(p.name,ev.target.value)}>
                     {p.values.map(v => (
-                        <option value = {v}>{v}</option>
+                        <option key={v} value = {v}>{v}</option>
                     ))}
                     </select>
                 </div>
