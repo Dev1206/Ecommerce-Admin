@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { useEffect,useState } from "react";
 
 
-export default function deleteProductPage(){
+export default function DeleteProductPage(){
     const router = useRouter();
     const [productInfo, setproductInfo] = useState();
     const {id} = router.query;
@@ -29,7 +29,7 @@ export default function deleteProductPage(){
     }
     return(
         <Layout>
-            <h1 className="text-center">Do you really want to delete "{productInfo?.title}"?</h1>
+            <h1 className="text-center">Do you really want to delete &quot;{productInfo?.title}&quot;?</h1>
             <div className="flex gap-3 justify-center">
 
                 <button onClick= {deleteProduct} className = "btn-red">
