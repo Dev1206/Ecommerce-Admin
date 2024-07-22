@@ -9,7 +9,7 @@ function Categories({swal}){
     const [editedCategory, setEditedCategory] = useState(null);
     const [name, setName] = useState('');
     const [categories, setCategories] = useState([]);
-    const [parentCategory, setParentCategory] = useState(null);
+    const [parentCategory, setParentCategory] = useState('');
     const [properties, setProperties] = useState([]);
 
     useEffect(() => {
@@ -122,7 +122,7 @@ function Categories({swal}){
                     <option value=''>No parent category</option>
                     
                     {categories.length > 0 && categories.map(category =>(
-                        <option value={category._id}>
+                        <option key={category._id} value={category._id}>
                             {category.name}
                         </option>
                     ))}
@@ -135,7 +135,7 @@ function Categories({swal}){
                     <button type="button" onClick={addProperty} className="btn-default text-sm mb-2"> Add new Property </button>
 
                     {properties.length > 0  && properties.map((property,index) => (
-                        <div className="flex gap-1 mb-2">
+                        <div key={index} className="flex gap-1 mb-2">
                             <input type="text" value={property.name} onChange={ev => handelPropertyNameChange(index,property,ev.target.value)} placeholder="Property name (example:color)" className="mb-0"/>
                             <input type="text" value={property.values} onChange={ev => handelPropertyValuesChange(index,property,ev.target.value)} placeholder="values, comma seperated" className="mb-0"/>
                             <button type="button" onClick={() => removeProperty(index)} className="btn-red">Remove</button>
@@ -168,7 +168,7 @@ function Categories({swal}){
 
                     <tbody>
                     {categories.length > 0 && categories.map(category =>(
-                        <tr>
+                        <tr key={category._id}>
                             <td>{category.name}</td>
                             <td>{category?.parent?.name}</td>
                             <td className="flex gap-1">
